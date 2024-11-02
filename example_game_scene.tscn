@@ -8,6 +8,6 @@ script = ExtResource("1_ov86j")
 
 [node name="Background" type="Sprite2D" parent="."]
 modulate = Color(0.0545956, 0.105886, 0.173389, 1)
-position = Vector2(578, 324)
-scale = Vector2(8.98438, 5.0625)
+position = Vector2(574, 328)
+scale = Vector2(7.98438, 4.07813)
 texture = ExtResource("1_yb81j")

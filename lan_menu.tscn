@@ -15,10 +15,9 @@ _spawnable_scenes = PackedStringArray("res://example_player.tscn")
 spawn_path = NodePath("../../ExampleGameScene")
 
 [node name="Join" type="Button" parent="MainMenu"]
-offset_left = 1.0
-offset_top = 2.0
-offset_right = 116.0
-offset_bottom = 34.0
+offset_top = 1.0
+offset_right = 74.0
+offset_bottom = 41.0
 text = "JOIN"
 
 [node name="ServerPingTimer" type="Timer" parent="MainMenu"]
@@ -27,6 +26,33 @@ text = "JOIN"
 one_shot = true
 
 [node name="ExampleGameScene" parent="." instance=ExtResource("2_rlu1y")]
+
+[node name="serverip" type="TextEdit" parent="."]
+offset_left = 149.0
+offset_top = 6.0
+offset_right = 439.0
+offset_bottom = 48.0
+text = "SERVER IP:"
+
+[node name="pingip" type="TextEdit" parent="."]
+offset_left = 443.0
+offset_top = 6.0
+offset_right = 733.0
+offset_bottom = 48.0
+text = "PING IP:"
+
+[node name="clientip" type="TextEdit" parent="."]
+offset_left = 739.0
+offset_top = 7.0
+offset_right = 1029.0
+offset_bottom = 49.0
+text = "CLIENT IP:"
+
+[node name="Data" type="TextEdit" parent="."]
+offset_left = 39.0
+offset_top = 598.0
+offset_right = 1135.0
+offset_bottom = 640.0
 
 [connection signal="pressed" from="MainMenu/Join" to="." method="_on_join_pressed"]
 [connection signal="timeout" from="MainMenu/ServerPingTimer" to="." method="_on_server_ping_timer_timeout"]
