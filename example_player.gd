@@ -2,11 +2,8 @@ extends Node2D
 
 @export var PLAYER_SPEED = 150
 
-
 func _enter_tree():
 	set_multiplayer_authority(name.to_int())
-	#camera_2d.enabled = is_multiplayer_authority() # Only Client's camera will be on
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

@@ -1,26 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://c42c150xjjf2h"]
+[gd_scene load_steps=4 format=3 uid="uid://c42c150xjjf2h"]
 
 [ext_resource type="Script" path="res://lan_menu.gd" id="1_omdqh"]
 [ext_resource type="PackedScene" uid="uid://ded0b1cyawqt1" path="res://example_player.tscn" id="2_d7b4a"]
+[ext_resource type="PackedScene" uid="uid://twxxph0d2tlc" path="res://example_game_scene.tscn" id="2_rlu1y"]
 
 [node name="Lan_Menu" type="Node2D"]
 script = ExtResource("1_omdqh")
-example_game_scene = ExtResource("2_d7b4a")
+example_player_scene = ExtResource("2_d7b4a")
 
-[node name="Host" type="Button" parent="."]
-offset_right = 115.0
-offset_bottom = 32.0
-text = "HOST"
+[node name="MainMenu" type="Node2D" parent="."]
 
-[node name="Join" type="Button" parent="."]
-offset_top = 35.0
-offset_right = 115.0
-offset_bottom = 67.0
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="MainMenu"]
+_spawnable_scenes = PackedStringArray("res://example_player.tscn")
+spawn_path = NodePath("../../ExampleGameScene")
+
+[node name="Join" type="Button" parent="MainMenu"]
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 116.0
+offset_bottom = 34.0
 text = "JOIN"
 
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://example_player.tscn")
-spawn_path = NodePath("..")
+[node name="ServerPingTimer" type="Timer" parent="MainMenu"]
 
-[connection signal="pressed" from="Host" to="." method="_on_host_pressed"]
-[connection signal="pressed" from="Join" to="." method="_on_join_pressed"]
+[node name="ClientListenTimer" type="Timer" parent="MainMenu"]
+one_shot = true
+
+[node name="ExampleGameScene" parent="." instance=ExtResource("2_rlu1y")]
+
+[connection signal="pressed" from="MainMenu/Join" to="." method="_on_join_pressed"]
+[connection signal="timeout" from="MainMenu/ServerPingTimer" to="." method="_on_server_ping_timer_timeout"]
+[connection signal="timeout" from="MainMenu/ClientListenTimer" to="." method="_on_client_listen_timer_timeout"]
