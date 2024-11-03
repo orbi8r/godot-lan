@@ -103,7 +103,7 @@ func _on_client_listen_timer_timeout():
 		GamePeer.create_server(GAME_PORT)
 		multiplayer.multiplayer_peer = GamePeer
 	else:
-		GamePeer.create_client("192.168.39.165", GAME_PORT)
+		GamePeer.create_client(SERVER_IP, GAME_PORT)
 		multiplayer.multiplayer_peer = GamePeer
 	
 	if multiplayer.is_server() and server_ping_timer.is_stopped():
