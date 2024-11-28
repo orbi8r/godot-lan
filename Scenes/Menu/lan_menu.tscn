@@ -1,0 +1,129 @@
+[gd_scene load_steps=5 format=3 uid="uid://di8h0wh5y253g"]
+
+[ext_resource type="Script" path="res://Scenes/Menu/lan_menu.gd" id="1_omcgy"]
+[ext_resource type="Script" path="res://Scenes/Menu/control.gd" id="2_qjvof"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ge8uk"]
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_5psvq"]
+font_size = 20
+
+[node name="LanMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_omcgy")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 295.0
+offset_top = 76.0
+offset_right = 861.0
+offset_bottom = 574.0
+script = ExtResource("2_qjvof")
+
+[node name="Buttons" type="HBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 56.0
+offset_right = 568.0
+offset_bottom = 98.0
+alignment = 1
+
+[node name="Create" type="Button" parent="Control/Buttons"]
+layout_mode = 2
+text = "     <CREATE LOCAL>     "
+
+[node name="Join" type="Button" parent="Control/Buttons"]
+layout_mode = 2
+text = "     <JOIN SERVER ID>     "
+
+[node name="Start" type="Button" parent="Control/Buttons"]
+layout_mode = 2
+text = "       <START GAME>       "
+
+[node name="Label" type="Label" parent="Control/Buttons"]
+layout_mode = 2
+
+[node name="Serverid" type="HScrollBar" parent="Control"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 40.0
+offset_right = 561.0
+offset_bottom = 53.0
+mouse_default_cursor_shape = 2
+min_value = 2.0
+max_value = 264.0
+step = 1.0
+page = 10.0
+value = 2.0
+
+[node name="LocalIP" type="TextEdit" parent="Control"]
+layout_mode = 2
+offset_left = 3.0
+offset_top = -2.0
+offset_right = 184.0
+offset_bottom = 37.0
+text = " "
+editable = false
+scroll_past_end_of_file = true
+scroll_fit_content_height = true
+
+[node name="PlayerName" type="TextEdit" parent="Control"]
+layout_mode = 0
+offset_left = 188.0
+offset_top = -2.0
+offset_right = 373.0
+offset_bottom = 37.0
+placeholder_text = "      Enter Username"
+scroll_past_end_of_file = true
+
+[node name="ServerIP" type="TextEdit" parent="Control"]
+layout_mode = 2
+offset_left = 377.0
+offset_top = -2.0
+offset_right = 560.0
+offset_bottom = 37.0
+editable = false
+scroll_past_end_of_file = true
+scroll_fit_content_height = true
+
+[node name="PlayerBrowser" type="Panel" parent="Control"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 101.0
+offset_right = 561.0
+offset_bottom = 498.0
+
+[node name="Heading" type="HBoxContainer" parent="Control/PlayerBrowser"]
+layout_mode = 0
+offset_right = 558.0
+offset_bottom = 41.0
+
+[node name="Username" type="Label" parent="Control/PlayerBrowser/Heading"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "PLAYER NAME"
+label_settings = SubResource("LabelSettings_ge8uk")
+horizontal_alignment = 1
+
+[node name="ID" type="Label" parent="Control/PlayerBrowser/Heading"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "ID"
+label_settings = SubResource("LabelSettings_5psvq")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PlayerBrowser"]
+layout_mode = 0
+offset_top = 42.0
+offset_right = 557.0
+offset_bottom = 396.0
+
+[connection signal="pressed" from="Control/Buttons/Create" to="." method="_on_create_pressed"]
+[connection signal="pressed" from="Control/Buttons/Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="Control/Buttons/Start" to="." method="_on_start_pressed"]

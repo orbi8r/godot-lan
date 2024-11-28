@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c3u8x6vbwkpx8"]
+
+[node name="PlayerInfo" type="HBoxContainer"]
+
+[node name="Username" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "TwentyLetterNamehere"
+horizontal_alignment = 1
+
+[node name="ID" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "AAA/BBB/CCCCCCCCCC"
+horizontal_alignment = 1

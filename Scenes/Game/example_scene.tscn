@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6gll7lmcapoq"]
+
+[ext_resource type="Texture2D" uid="uid://blntv3mstn80l" path="res://icon.svg" id="1_8v5gu"]
+[ext_resource type="Script" path="res://Scenes/Game/example_scene.gd" id="1_prvp5"]
+[ext_resource type="PackedScene" uid="uid://bwe1sygdrlvaf" path="res://Scenes/Game/example_player.tscn" id="2_fbgb4"]
+
+[node name="ExampleScene" type="Node2D"]
+script = ExtResource("1_prvp5")
+player_scene = ExtResource("2_fbgb4")
+
+[node name="Players" type="Node2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0.0248336, 0.14782, 0.172087, 1)
+show_behind_parent = true
+position = Vector2(577, 330.5)
+scale = Vector2(8.17188, 4.36719)
+texture = ExtResource("1_8v5gu")

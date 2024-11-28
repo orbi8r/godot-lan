@@ -11,13 +11,17 @@ config_version=5
 [application]
 
 config/name="Godot-lan"
-run/main_scene="res://lan_menu.tscn"
+run/main_scene="res://Scenes/Menu/lan_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-ClientAutoload="*res://client_autoload.gd"
+Infoautoload="*res://Scenes/Menu/infoautoload.gd"
+
+[global_group]
+
+Player=""
 
 [input]
 
