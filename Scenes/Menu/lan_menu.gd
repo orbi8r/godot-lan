@@ -15,21 +15,22 @@ func _ready() -> void:
 	multiplayer.connection_failed.connect(connection_failed)
 
 
-
 # Called for all peers, when a peer connects
 func peer_connected(id):
 	print("Player Connected "+ str(id))
+	append_player_browser.rpc_id(id,Infoautoload.client_username,Infoautoload.CLIENT_IP,GamePeer.get_unique_id())
 
 
 # Called for all peers, when a peer disconnects
 func peer_disconnected(id):
 	print("Player Disconnected " + str(id))
+	remove_player_browser(id)
 
 
 # Called Client side, when peer connects
 func connected_to_server():
 	print("Connected To Sever!")
-	append_player_browser.rpc(Infoautoload.client_username,Infoautoload.CLIENT_IP,GamePeer.get_unique_id())
+	append_player_browser(Infoautoload.client_username,Infoautoload.CLIENT_IP,GamePeer.get_unique_id())
 
 
 # Called Client side, when peer couldnt connect
@@ -44,6 +45,10 @@ func append_player_browser(username,ip,id):
 	new_player_info.get_child(0).text = username
 	new_player_info.get_child(1).text =  ip.split(".")[2] + "/" + ip.split(".")[3] + "/" + str(id)
 	player_container.add_child(new_player_info)
+
+
+func remove_player_browser(id):
+	player_container.get_node(str(id)).queue_free()
 
 
 func _on_create_pressed() -> void:
@@ -62,6 +67,9 @@ func _on_join_pressed() -> void:
 		print("Joining "+ Infoautoload.SERVER_IP +" Error : " + str(error_check))
 		return
 	multiplayer.set_multiplayer_peer(GamePeer)
+	
+	#tests
+	print(GamePeer.is_server_relay_supported())
 
 
 func _on_start_pressed() -> void:

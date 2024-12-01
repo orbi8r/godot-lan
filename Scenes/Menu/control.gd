@@ -27,4 +27,3 @@ func _process(delta: float) -> void:
 	if player_name.text != "" and Infoautoload.client_username != (player_name.text).left(20):
 		Infoautoload.client_username = (player_name.text).left(20)
 	
-	
