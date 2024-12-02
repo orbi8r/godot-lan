@@ -67,9 +67,6 @@ func _on_join_pressed() -> void:
 		print("Joining "+ Infoautoload.SERVER_IP +" Error : " + str(error_check))
 		return
 	multiplayer.set_multiplayer_peer(GamePeer)
-	
-	#tests
-	print(GamePeer.is_server_relay_supported())
 
 
 func _on_start_pressed() -> void:
